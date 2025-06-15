@@ -1,17 +1,18 @@
+import os
 from duolingo import Duolingo
 import time
 import datetime
 
-# GANTI email dan password di sini
-email = "emailkamu@gmail.com"
-password = "passwordkamu"
+# Ambil email & password dari Environment Variable
+email = os.getenv("daffafarid.trakhir@gmail.com")
+password = os.getenv("peribadi2")
 
-# Robot berhenti jam 21:00 (9 malam)
-jam_berhenti = datetime.time(21, 0)
+# Jam bot akan berhenti
+jam_berhenti = datetime.time(2, 0)
 
 def belajar():
     print("Robot belajar mulai...")
-    lingo = Duolingo(daffafarid.trakhir@gmail.com, peribadi2)
+    lingo = Duolingo(email, password)
 
     while True:
         sekarang = datetime.datetime.now().time()
@@ -20,9 +21,8 @@ def belajar():
             break
 
         xp = lingo.get_daily_xp_progress()
-        print(f"XP hari ini:1000 {xp}")
+        print(f"XP hari ini: {xp}")
 
-        # Tunggu 5 menit sebelum cek lagi
         time.sleep(60 * 5)
 
 belajar()
